@@ -171,6 +171,14 @@ window.addEventListener("scroll", () => {
   });
 });
 
+function updateNavbarBackground() {
+  if (window.innerWidth < 500) {
+    navbar.style.backgroundColor = lightNavbar;
+  } else {
+    navbar.style.background = 'none';
+  }
+}
+
 function changeMode(event) {
   event.preventDefault();
   // navbar
@@ -213,9 +221,8 @@ function changeMode(event) {
     background.style.backgroundColor = lightMode;
     // navbar
     navbarText.style.color = darkMode;
-    if (window.innerWidth < 500) {
-      navbar.style.backgroundColor = lightNavbar;
-    }
+    
+    updateNavbarBackground();
 
     // card on hero
     heroCard.style.backgroundColor = lightMode;
@@ -265,6 +272,8 @@ function changeMode(event) {
 
     if (window.innerWidth < 500) {
       navbar.style.backgroundColor = darkNavbar;
+    }else {
+      navbar.style.background = 'none';
     }
 
     //card on hero
@@ -310,6 +319,8 @@ function changeMode(event) {
     isClicked = true;
   }
 }
+
+window.addEventListener('resize', updateNavbarBackground);
 
 const button = document.getElementById("myButton");
 button.addEventListener("click", changeMode);
